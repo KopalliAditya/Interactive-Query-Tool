@@ -1,6 +1,6 @@
 ## Command line interface for generating and querying logs
 
-Interactive command-line based application framework built on .NET Core by using the following libraries
+Interactive command-line based application framework built on .NET 7.0 Standard by using the following libraries
 
 1. Sharprompt
 2. CSVHelper
@@ -13,7 +13,12 @@ Interactive command-line based application framework built on .NET Core by using
 
 ## Running the application
 
-dotnet run 
+The application needs to have dotnet SDKs installed for running the application from the CLI.
+
+Building the application - dotnet build /nowarn:msb4011
+Running the application - dotnet run
+
+![](images/Running%20Application.jpg)
 
 ## Functionality
 
@@ -38,8 +43,10 @@ The app can perform any of the following operations
 
 ## Total Time Taken 
 
-12 hours in Total
+~ 12 hours
 
 Analysis and POC - 4 hours
+
 Building Generate Function - 3 hours
+
 Building UI and Query Function - 5 hours
