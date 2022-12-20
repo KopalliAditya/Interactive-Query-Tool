@@ -3,23 +3,36 @@ using CsvHelper;
 using System.Globalization;
 using Sharprompt;
 using ConsoleApp;
+using QueryTool;
 
+// Global Variables
 
-IEnumerable<CPUUsage> records;
+string generate = "Generate CPU Usage";
+string query = "Query CPU Usage";
+string quit = "Quit";
 
-using (var reader = new StreamReader("C:\\Users\\Aditya\\source\\repos\\ConsoleApp\\ConsoleApp\\CPUUsage.csv"))
-using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+var generateLogs = new GenerateLogs();
+var querlyLogs = new QueryLogs();
+
+Prompt.Symbols.Prompt = new Symbol(">", ">");
+
+while (true)
 {
-    records = csv.GetRecords<CPUUsage>();
+    var action = Prompt.Select("Select your action", new[] { generate, query, quit });
+
+    if (action.Equals(generate))
+    {
+        generateLogs.Generate();
+    }
+
+    if (action.Equals(query))
+    {
+        querlyLogs.QueryLog();
+    }
+
+    if (action.Equals(quit))
+    {
+        break;
+    }
+
 }
-
-var name = Prompt.Input<string>("What's your name?");
-Console.WriteLine($"Hello, {name}!");
-
-// Password input
-var secret = Prompt.Password("Type new password", validators: new[] { Validators.Required(), Validators.MinLength(8) });
-Console.WriteLine("Password OK");
-
-// Confirmation
-var answer = Prompt.Confirm("Are you ready?", defaultValue: true);
-Console.WriteLine($"Your answer is {answer}");
